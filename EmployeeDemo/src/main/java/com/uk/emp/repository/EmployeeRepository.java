@@ -33,6 +33,10 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
 
 	List<Employee> findByAgeOrderByFirstNameDesc(int age);
 
+	//List<Employee> findByStartDateBetween(LocalDate joiningDate, LocalDate joiningDate);
+
+	List<Employee> findByJoiningDateBetween(LocalDate fromDate, LocalDate toDate);
+
 
 	
 

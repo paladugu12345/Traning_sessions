@@ -24,6 +24,7 @@ public interface EmployeeService {
 	public List<Employee> getAllEmployees(int pageNumber, int pageSize);
 	public List<FetchEmployeeResponseDto> fetchEmployeeWithJoiningDate(int pageNumber, int pageSize, LocalDate joiningdate);
 	public List<Employee> findByAgeOrderByFirstNameDesc(int age);
+	public List<Employee> findByJoiningDateBetween(LocalDate fromDate, LocalDate toDate);
 
 
 

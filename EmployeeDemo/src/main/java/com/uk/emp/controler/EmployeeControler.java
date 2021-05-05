@@ -110,7 +110,11 @@ public class EmployeeControler {
 		return employeeService.fetchEmployeeWithJoiningDate(pageNumber, pageSize, joiningdate);
 	}
 	
-	
+	@GetMapping("/getallemployeewithFromandtodate")
+	public List<Employee> fetchActivityWithFromAndToDate( @DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam LocalDate fromDate,
+			@DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam LocalDate toDate) {
+		return employeeService.findByJoiningDateBetween(fromDate, toDate);
+	}
 
 	
 }

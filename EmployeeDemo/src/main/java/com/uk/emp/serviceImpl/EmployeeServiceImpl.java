@@ -163,6 +163,13 @@ public List<Employee> findByAgeOrderByFirstNameDesc(int age) {
 	// TODO Auto-generated method stub
 	return employeeRepository.findByAgeOrderByFirstNameDesc(age);
 }
+
+
+@Override
+public List<Employee> findByJoiningDateBetween(LocalDate fromDate, LocalDate toDate) {
+	// TODO Auto-generated method stub
+	return employeeRepository.findByJoiningDateBetween(fromDate,toDate);
+}
 }
 
 
