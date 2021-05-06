@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.uk.emp.dto.EmployeeResponseDto;
 import com.uk.emp.dto.FetchEmployeeResponseDto;
 import com.uk.emp.dto.UpdateRequestDto;
 import com.uk.emp.entity.Employee;
@@ -110,7 +112,16 @@ public class EmployeeControler {
 		return employeeService.fetchEmployeeWithJoiningDate(pageNumber, pageSize, joiningdate);
 	}
 	
-	
+	@GetMapping("/getallemployeewithFromandtodate")
+	public List<Employee> fetchActivityWithFromAndToDate( @DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam LocalDate fromDate,
+			@DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam LocalDate toDate) {
+		return employeeService.findByJoiningDateBetween(fromDate, toDate);
+	}
 
+	@GetMapping("/getAlldetails")
+	public List<EmployeeResponseDto> getAlldetails( @RequestParam String firstName) {
+		return   employeeService.getDetails(firstName);
+	}
+	
 	
 }

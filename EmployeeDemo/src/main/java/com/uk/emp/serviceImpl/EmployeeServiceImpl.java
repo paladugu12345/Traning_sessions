@@ -12,6 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.uk.emp.dto.EmployeeResponseDto;
 import com.uk.emp.dto.FetchEmployeeResponseDto;
 import com.uk.emp.dto.UpdateRequestDto;
 import com.uk.emp.entity.Employee;
@@ -162,6 +163,19 @@ public List<FetchEmployeeResponseDto> fetchEmployeeWithJoiningDate(int pageNumbe
 public List<Employee> findByAgeOrderByFirstNameDesc(int age) {
 	// TODO Auto-generated method stub
 	return employeeRepository.findByAgeOrderByFirstNameDesc(age);
+}
+
+
+@Override
+public List<Employee> findByJoiningDateBetween(LocalDate fromDate, LocalDate toDate) {
+	// TODO Auto-generated method stub
+	return employeeRepository.findByJoiningDateBetween(fromDate,toDate);
+}
+
+
+@Override
+public List<EmployeeResponseDto> getDetails(String firstName) {
+	return employeeRepository.getCountOfUserByFirstName(firstName) ;
 }
 }
 

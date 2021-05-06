@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import com.uk.emp.dto.EmployeeResponseDto;
 import com.uk.emp.dto.FetchEmployeeResponseDto;
 import com.uk.emp.dto.UpdateRequestDto;
 import com.uk.emp.entity.Employee;
@@ -24,7 +25,8 @@ public interface EmployeeService {
 	public List<Employee> getAllEmployees(int pageNumber, int pageSize);
 	public List<FetchEmployeeResponseDto> fetchEmployeeWithJoiningDate(int pageNumber, int pageSize, LocalDate joiningdate);
 	public List<Employee> findByAgeOrderByFirstNameDesc(int age);
-
+	public List<Employee> findByJoiningDateBetween(LocalDate fromDate, LocalDate toDate);
+	public List<EmployeeResponseDto> getDetails(String firstName);
 
 
 

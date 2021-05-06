@@ -6,8 +6,11 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.uk.emp.dto.EmployeeResponseDto;
 import com.uk.emp.entity.Employee;
 
 @Repository
@@ -33,8 +36,16 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
 
 	List<Employee> findByAgeOrderByFirstNameDesc(int age);
 
+	//List<Employee> findByStartDateBetween(LocalDate joiningDate, LocalDate joiningDate);
 
+	List<Employee> findByJoiningDateBetween(LocalDate fromDate, LocalDate toDate);
+
+	@Query("select new com.uk.emp.dto.EmployeeResponseDto(firstName,count(*)) from Employee where firstName=:firstName")
+    List<EmployeeResponseDto> getCountOfUserByFirstName(@Param("firstName") String firstName);
 	
+	
+	
+
 
 
  
